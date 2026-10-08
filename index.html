@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Virtual Training Suite</title>
+    <title>POEM-SET - SGII</title>
     <link rel="shortcut icon" href="TemplateData/img/favicon.ico">
     <link rel="stylesheet" href="TemplateData/css/style.css">
     <link href="Build/WebPlayer.loader.js" rel="preload" as="script" >
@@ -314,10 +315,13 @@
     }
 
     swapTo = function(lang) {
-        if(lang!=='fr'||lang!=='en')
+        lang = String(lang || 'en').toLowerCase().split('-')[0];
+        if (lang !== 'fr' && lang !== 'en') {
             lang = 'en';
+        }
 
         currentLang = lang;
+        document.documentElement.lang = lang;
         document.getElementById("warningBrowserText").innerHTML = dico[lang][0];
         document.getElementById("enterVRButton").innerHTML = dico[lang][5];
     }
